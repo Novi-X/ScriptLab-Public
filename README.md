@@ -7,6 +7,7 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 ```
 📂 ScriptLab-main/
 ├── 📂 Filesystem_Tools/
+│   ├── 📄 README.md
 │   ├── 📂 Directory-Structure/
 │   │   ├── 📄 README.md
 │   │   └── 📄 dir-structure.py
