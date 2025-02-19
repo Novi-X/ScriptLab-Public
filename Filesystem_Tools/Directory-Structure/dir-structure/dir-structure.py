@@ -38,10 +38,11 @@ import time
 import json
 import argparse
 from datetime import datetime
+from tqdm import tqdm  # Progress bar
 from colorama import Fore, Style
 
 def get_directory_tree(root_directory, output_file, exclude=None, json_output=False):
-    """Retrieve the directory structure recursively and write it to a file in ASCII format."""
+    """Retrieve the directory structure recursively and write it to a file in ASCII format with a progress bar."""
     start_time = time.time()  # Start timing the script execution
     current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Get current date/time
     exclude = set(exclude) if exclude else set()  # Convert exclude list to a set for fast lookup
@@ -59,6 +60,7 @@ def get_directory_tree(root_directory, output_file, exclude=None, json_output=Fa
             return [f"{prefix}⚠️ This folder is empty\n"]
 
         lines = []
+        progress_bar.update(1)  # Update progress bar for each folder processed
 
         # Iterate through folders
         for index, entry in enumerate(folder_entries):
@@ -91,11 +93,18 @@ def get_directory_tree(root_directory, output_file, exclude=None, json_output=Fa
 
         return lines
 
+    # Get total folders for progress bar
+    total_folders = sum(len(dirs) for _, dirs, _ in os.walk(root_directory))
+    global progress_bar
+    progress_bar = tqdm(total=total_folders, desc="Scanning Directories", unit="folder", dynamic_ncols=True)
+
     # Generate tree structure with colors for terminal output
     tree_structure_colored = generate_tree(root_directory, use_colors=True)
 
     # Generate tree structure without colors for file output
     tree_structure_plain = generate_tree(root_directory, use_colors=False)
+
+    progress_bar.close()  # Close progress bar when done
 
     end_time = time.time()  # Stop timing execution
     execution_time = end_time - start_time  # Calculate elapsed time
@@ -111,7 +120,7 @@ def get_directory_tree(root_directory, output_file, exclude=None, json_output=Fa
         f.write(f"📂 {os.path.basename(root_directory)}/\n")
         f.write("\n".join(tree_structure_plain) + "\n")
 
-    print(f"Directory structure saved to: {output_file}")
+    print(f"\n{Fore.GREEN}✔ Directory structure saved to:{Style.RESET_ALL} {output_file}")
 
     # Print to terminal with colors
     print("\n".join(tree_structure_colored))
@@ -122,7 +131,7 @@ def get_directory_tree(root_directory, output_file, exclude=None, json_output=Fa
         tree_dict = {"name": os.path.basename(root_directory), "children": tree_structure_plain}
         with open(json_file, "w", encoding="utf-8") as jf:
             json.dump(tree_dict, jf, indent=4)
-        print(f"JSON output saved to: {json_file}")
+        print(f"{Fore.GREEN}✔ JSON output saved to:{Style.RESET_ALL} {json_file}")
 
 # Command-line argument parsing
 if __name__ == "__main__":
@@ -130,12 +139,12 @@ if __name__ == "__main__":
     parser.add_argument("directory", help="Directory to scan.")
     parser.add_argument("--exclude", nargs="+", help="Folders or file types to exclude", default=[])
     parser.add_argument("--json", action="store_true", help="Output directory structure as JSON")
-    
+
     args = parser.parse_args()
     root_directory = args.directory.strip()
     output_file = "directory_structure.txt"
-    
+
     if os.path.isdir(root_directory):
         get_directory_tree(root_directory, output_file, exclude=args.exclude, json_output=args.json)
     else:
-        print("Invalid directory. Please enter a valid path.")
+        print(f"{Fore.RED}Error:{Style.RESET_ALL} Invalid directory. Please enter a valid path.")
