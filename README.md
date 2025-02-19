@@ -1,58 +1,85 @@
 # ScriptLab
 
 ## Overview
+ScriptLab is a collection of automation scripts designed to streamline workflows related to **file management, renaming, and system organization**. These scripts aim to enhance efficiency by automating repetitive tasks, handling metadata, and improving file organization.
 
-**ScriptLab** is a collection of automation scripts designed to streamline and simplify various tasks. This repository includes tools for file renaming, organization, and more, aiming to enhance productivity and efficiency.
-
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Features
-
-- **Renamers**: Scripts to bulk rename files based on specific criteria.
-  - `checksum-rename.py`: Renames files based on their SHAKE-128 checksum.
-  - `music-renamer.py`: Renames music files using metadata to format filenames as "## - Artist Name - Song Title (feat. Featured Artist).mp3/flac/wav".
-
-## Installation
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yung-megafone/ScriptLab.git
-   cd ScriptLab
-   ```
-
-2. **Install Dependencies**:
-   - Ensure you have Python 3.6+ installed.
-   - Install required Python packages:
-     ```bash
-     pip install -r requirements.txt
-     ```
-
-## Usage
-
-Navigate to the directory containing the desired script and execute it with Python:
-
-```bash
-python script_name.py /path/to/target/directory
+## 📂 Project Structure
+```
+📂 ScriptLab/
+├── 📂 Filesystem_Tools/
+│   ├── 📂 Directory-Structure/
+│   │   ├── 📄 README.md
+│   │   └── 📄 dir-structure.py
+│   ├── 📂 Icon-Changer/
+│   │   ├── 📄 README.md
+│   │   └── 📄 icon-changer.py
+│   ├── 📂 checksum-file-renamer/
+│   │   ├── 📄 README.md
+│   │   └── 📄 checksum-rename.py
+│   ├── 📂 music-renamer/
+│   │   ├── 📄 README.md
+│   │   └── 📄 music-renamer.py
+├── 📄 LICENSE
+├── 📄 README.md
+└── 📄 requirements.txt
 ```
 
-For example, to use the music renamer script:
+## 🔹 Included Scripts
+### **1️⃣ Directory Structure Generator**
+📌 **Generates an ASCII directory tree of a folder and its subdirectories.**
+- Supports file size display and JSON output.
+- Allows excluding specific folders or file types.
+- Includes progress tracking for large structures.
 
+📍 **Usage:**
 ```bash
-python music_renamer.py /path/to/music/files
+python dir-structure.py /path/to/folder --json
 ```
 
-Follow any on-screen prompts to complete the process.
+### **2️⃣ Icon Changer**
+📌 **Assigns a custom folder icon to all subdirectories.**
+- Supports Windows (`.ico` files).
+- Includes recursive mode to process all subfolders.
 
-## Contributing
+📍 **Usage:**
+```bash
+python icon-changer.py /path/to/folders /path/to/icon.ico --recursive
+```
 
-Contributions are welcome! Please fork this repository, make your changes, and submit a pull request. For major changes, open an issue first to discuss what you'd like to change.
+### **3️⃣ Checksum File Renamer**
+📌 **Renames files using their SHAKE-128 checksum.**
+- Prevents duplicate files by ensuring unique names.
+- Uses multithreading for fast processing.
+- Includes a progress bar for better tracking.
 
-## License
+📍 **Usage:**
+```bash
+python checksum-rename.py /path/to/files
+```
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+### **4️⃣ Music File Renamer**
+📌 **Renames music files based on metadata (ID3, FLAC, WAV tags).**
+- Formats filenames as `01 - Artist - Song Title.mp3`.
+- Supports recursive processing of subdirectories.
+- Prevents overwriting and allows moving renamed files.
+
+📍 **Usage:**
+```bash
+python music-renamer.py /path/to/music --copy
+```
+
+## 🛠 Installation
+To install dependencies, run:
+```bash
+pip install -r requirements.txt
+```
+
+## 📜 License
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+## 🚀 Future Improvements
+🔹 Add GUI support for script execution.  
+🔹 Enhance error handling across all tools.  
+🔹 Expand file format support for renaming and metadata extraction.  
+
+For feature requests or contributions, feel free to open an **issue** or **pull request**! 🚀
