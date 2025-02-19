@@ -1,3 +1,38 @@
+"""
+Directory Structure Generator
+-----------------------------
+Author: yung-megafone
+Date: 2025-02-19
+License: MIT License
+
+Description:
+This script recursively scans a directory and generates a structured 
+ASCII representation of all subdirectories and files.
+
+Features:
+- Displays the full folder tree with ASCII characters.
+- Shows empty directories as "⚠️ This folder is empty".
+- Outputs the directory structure to a text file.
+- Displays file sizes in MB, converting to GB if necessary.
+- Allows excluding specific file types or directories.
+- Provides JSON output support.
+- Measures execution time and logs metadata at the top of the output file.
+- Supports colorized terminal output for better readability.
+
+Usage:
+    python directory_structure.py <directory_path> [--exclude folder1 folder2 --json]
+
+Example:
+    python directory_structure.py "/Users/YourName/Music"
+
+Output:
+    📂 Music/
+    ├── 📂 Rock/
+    │   ├── 📄 song1.mp3 (4.35 MB)
+    │   ├── 📄 song2.mp3 (3.89 MB)
+    └── 📂 Jazz/
+        └── 📄 smooth_jazz.mp3 (2.15 MB)
+"""
 import os
 import time
 import json
