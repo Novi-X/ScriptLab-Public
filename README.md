@@ -7,20 +7,20 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 ```
 📂 ScriptLab-main/
 ├── 📂 Filesystem_Tools/
-│   ├── 📄 README.md
 │   ├── 📂 Directory-Structure/
 │   │   ├── 📄 README.md
 │   │   └── 📄 dir-structure.py
 │   ├── 📂 Icon-Changer/
 │   │   ├── 📄 README.md
 │   │   └── 📄 icon-changer.py
-│   └── 📂 Renamers/
-│       ├── 📂 checksum-file-renamer/
-│       │   ├── 📄 README.md
-│       │   └── 📄 checksum-rename.py
-│       └── 📂 music-renamer/
-│           ├── 📄 README.md
-│           └── 📄 music-renamer.py
+│   ├── 📂 Renamers/
+│   │   ├── 📂 checksum-file-renamer/
+│   │   │   ├── 📄 README.md
+│   │   │   └── 📄 checksum-rename.py
+│   │   └── 📂 music-renamer/
+│   │       ├── 📄 README.md
+│   │       └── 📄 music-renamer.py
+│   └── 📄 README.md
 ├── 📄 LICENSE
 ├── 📄 README.md
 └── 📄 requirements.txt
