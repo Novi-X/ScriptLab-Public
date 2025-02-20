@@ -22,9 +22,9 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   │       └── 📄 music-renamer.py
 │   └── 📄 README.md
 ├── 📂 Metadata-Tools/
-│   ├── 📂 meta-write/
-│   │   ├── 📄 README.md
-│   │   └── 📄 meta-write.py
+│   └── 📂 meta-write/
+│       ├── 📄 README.md
+│       └── 📄 meta-write.py
 ├── 📄 LICENSE
 ├── 📄 README.md
 └── 📄 requirements.txt
