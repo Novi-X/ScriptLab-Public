@@ -1,7 +1,7 @@
 # ScriptLab
 
 ## Overview
-ScriptLab is a collection of automation scripts designed to streamline workflows related to **file management, renaming, and system organization**. These scripts aim to enhance efficiency by automating repetitive tasks, handling metadata, and improving file organization.
+ScriptLab is a collection of automation scripts designed to streamline workflows related to **file management, renaming, metadata handling, and system organization**. These scripts aim to enhance efficiency by automating repetitive tasks, handling metadata, and improving file organization.
 
 ## 📂 Project Structure
 ```
@@ -21,6 +21,10 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   │       ├── 📄 README.md
 │   │       └── 📄 music-renamer.py
 │   └── 📄 README.md
+├── 📂 Metadata-Tools/
+│   ├── 📂 meta-write/
+│   │   ├── 📄 README.md
+│   │   └── 📄 meta-write.py
 ├── 📄 LICENSE
 ├── 📄 README.md
 └── 📄 requirements.txt
@@ -68,6 +72,19 @@ python checksum-rename.py /path/to/files
 📍 **Usage:**
 ```bash
 python music-renamer.py /path/to/music --copy
+```
+
+### **5️⃣ Metadata Writer (Filename to Metadata)**
+📌 **Extracts structured information from filenames and writes it as embedded metadata.**
+- Supports **MP3, FLAC, and WAV** formats.
+- Parses filenames for **Track Number, Artist, Title, and Featured Artists**.
+- Handles **inconsistent file naming conventions**.
+- Uses **Mutagen** to modify metadata tags.
+- Includes a **progress bar** for large collections.
+
+📍 **Usage:**
+```bash
+python meta-write.py /path/to/music
 ```
 
 ## 🛠 Installation

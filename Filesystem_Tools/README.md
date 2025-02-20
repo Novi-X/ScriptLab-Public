@@ -1,51 +1,74 @@
 # Filesystem Tools
 
 ## Overview
-The **Filesystem Tools** collection includes utilities designed to help manage files, directories, and system organization. These scripts automate repetitive tasks such as generating directory structures, renaming files based on metadata, and modifying folder icons.
+The **Filesystem Tools** collection contains scripts designed to help manage and organize files and folders efficiently. These tools simplify file renaming, directory structure visualization, and folder customization.
 
 ## 📂 Tools Included
 
 ### **1️⃣ Directory Structure Generator**
 📌 **Generates an ASCII directory tree of a folder and its subdirectories.**
-- Displays file sizes and allows JSON output.
-- Supports excluding specific folders or file types.
-- Includes a progress bar for better tracking.
+- Displays a full folder tree with file sizes.
+- Supports **JSON output**.
+- Allows excluding specific folders or file types.
+- Uses a progress bar for tracking large structures.
 
 📍 **Usage:**
 ```bash
 python dir-structure.py /path/to/folder --json
 ```
 
+---
+
 ### **2️⃣ Icon Changer**
 📌 **Assigns a custom folder icon to all subdirectories.**
 - Supports Windows (`.ico` files).
-- Includes recursive mode to apply icons to nested subdirectories.
+- Includes **recursive mode** to process all subfolders.
+- Uses `desktop.ini` to apply icons without restarting Explorer.
 
 📍 **Usage:**
 ```bash
 python icon-changer.py /path/to/folders /path/to/icon.ico --recursive
 ```
 
-### **3️⃣ Checksum File Renamer**
+---
+
+### **3️⃣ File Renamers**
+
+#### ✅ **Checksum File Renamer**
 📌 **Renames files using their SHAKE-128 checksum.**
-- Ensures unique filenames and prevents duplicates.
-- Uses multithreading to speed up renaming.
-- Includes a progress bar for tracking.
+- Prevents duplicates by ensuring unique names.
+- Uses **multithreading** for faster processing.
+- Includes a progress bar for better tracking.
 
 📍 **Usage:**
 ```bash
 python checksum-rename.py /path/to/files
 ```
 
-### **4️⃣ Music File Renamer**
-📌 **Renames music files based on their metadata (ID3, FLAC, WAV tags).**
-- Standardizes filenames as `01 - Artist - Song Title.mp3`.
-- Supports recursive processing of subdirectories.
+#### ✅ **Music File Renamer**
+📌 **Renames music files based on metadata (ID3, FLAC, WAV tags).**
+- Formats filenames as `01 - Artist - Song Title.mp3`.
+- Supports **recursive processing** of subdirectories.
 - Prevents overwriting and allows moving renamed files.
 
 📍 **Usage:**
 ```bash
 python music-renamer.py /path/to/music --copy
+```
+
+---
+
+### **4️⃣ Metadata Writer (Filename to Metadata)**
+📌 **Extracts structured information from filenames and writes it as embedded metadata.**
+- Supports **MP3, FLAC, and WAV** formats.
+- Parses filenames for **Track Number, Artist, Title, and Featured Artists**.
+- Handles **inconsistent file naming conventions**.
+- Uses **Mutagen** to modify metadata tags.
+- Includes a **progress bar** for large collections.
+
+📍 **Usage:**
+```bash
+python meta-write.py /path/to/music
 ```
 
 ## 🛠 Installation
