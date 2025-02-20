@@ -1,5 +1,5 @@
-# **📜 T2_Structured_Pseudocode.md**
-> **Purpose:** A **structured, step-by-step** breakdown that closely resembles the real Python logic.
+## **📜 T1_HighLevel_Pseudocode.md**
+> **Purpose:** This provides an easy-to-understand, **plain-language** description of what the script does.
 
 ---
 

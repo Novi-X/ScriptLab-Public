@@ -10,9 +10,13 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   ├── 📂 Directory-Structure/
 │   │   ├── 📄 README.md
 │   │   └── 📄 dir-structure.py
-│   ├── 📂 Icon-Changer/
-│   │   ├── 📄 README.md
-│   │   └── 📄 icon-changer.py
+│   ├── 📂 Metadata-Tools/
+│   │   ├── 📂 Icon-Changer/
+│   │   │   ├── 📄 README.md
+│   │   │   ├── 📄 icon-changer.py
+│   │   ├── 📂 Meta-Write/
+│   │   │   ├── 📄 README.md
+│   │   │   ├── 📄 meta-write.py
 │   ├── 📂 Renamers/
 │   │   ├── 📂 checksum-file-renamer/
 │   │   │   ├── 📄 README.md
@@ -21,10 +25,6 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   │       ├── 📄 README.md
 │   │       └── 📄 music-renamer.py
 │   └── 📄 README.md
-├── 📂 Metadata-Tools/
-│   └── 📂 meta-write/
-│       ├── 📄 README.md
-│       └── 📄 meta-write.py
 ├── 📄 LICENSE
 ├── 📄 README.md
 └── 📄 requirements.txt
