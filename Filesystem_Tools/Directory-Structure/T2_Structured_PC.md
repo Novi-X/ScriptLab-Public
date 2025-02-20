@@ -1,4 +1,3 @@
-```markdown
 # **📜 T2_Structured_Pseudocode.md**
 > **Purpose:** A **structured, step-by-step** breakdown that closely resembles the real Python logic.
 
