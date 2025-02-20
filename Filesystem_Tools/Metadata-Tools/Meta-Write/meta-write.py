@@ -1,28 +1,3 @@
-"""
-Metadata Writer (Filename to Metadata)
----------------------------------------
-Author: yung-megafone
-Date: 2025-02-19
-License: MIT License
-
-Description:
-This script extracts metadata from structured filenames and writes it into the actual music file's metadata.  
-It ensures track number, artist, title, and featured artists are correctly embedded.
-
-Features:
-- Supports MP3, FLAC, and WAV file formats.
-- Parses various filename structures intelligently.
-- Recognizes multiple separators (`-`, `_`, `ft.`, `feat.`).
-- Handles missing track numbers and normalizes metadata.
-- Writes metadata using Mutagen.
-- Includes a progress bar for large music libraries.
-
-Usage:
-    python metadata-writer.py <directory>
-
-Example:
-    python metadata-writer.py "C:\\Users\\YourName\\Music"
-"""
 import os
 import re
 import argparse
@@ -44,8 +19,12 @@ FEATURED_PATTERNS = [r"feat\.?", r"ft\.?", r"featuring"]
 
 def parse_filename(filename):
     """ Extract metadata from filename using flexible patterns. """
+    # First, remove the file extension to avoid it being treated as part of the title
+    filename_no_ext = re.sub(r"\.(mp3|flac|wav)$", "", filename, flags=re.IGNORECASE)
+    
+    # Check if any predefined pattern matches
     for pattern in FILENAME_PATTERNS:
-        match = pattern.match(filename)
+        match = pattern.match(filename_no_ext)
         if match:
             groups = match.groups()
             metadata = {
@@ -53,28 +32,38 @@ def parse_filename(filename):
                 "artist": groups[1].strip(),
                 "title": groups[2].strip(),
                 "featured_artists": groups[3].strip() if len(groups) > 3 and groups[3] else "",
-                "extension": groups[-1]
+                "extension": filename.split('.')[-1]  # Get the file extension
             }
             return metadata
     
     # Fallback: Try to split the filename and extract possible metadata
-    parts = re.split(r"[-_]", filename.replace(".mp3", "").replace(".flac", "").replace(".wav", ""))
+    parts = re.split(r"[-_]", filename_no_ext)
     parts = [p.strip() for p in parts if p.strip()]
 
-    # Assume first part is artist, last is title
     if len(parts) >= 2:
-        metadata = {
-            "track_number": "00",
-            "artist": parts[0],
-            "title": parts[1],
-            "featured_artists": "",
-            "extension": ".mp3"
-        }
+        # Assume the first part is the artist and the last part is the title
+        artist = parts[0]
+        title = parts[-1]  # Take the last part as the title
         
-        # Check for featured artists
+        # Ensure file extension is removed
+        if title.lower().endswith(('mp3', 'flac', 'wav')):
+            title = title.rsplit('.', 1)[0]
+
+        # Detect featured artists
+        featured_artists = ""
         for feat_pattern in FEATURED_PATTERNS:
             if re.search(feat_pattern, " ".join(parts), re.IGNORECASE):
-                metadata["featured_artists"] = re.split(feat_pattern, " ".join(parts), flags=re.IGNORECASE)[-1].strip()
+                title = " ".join(parts[1:]).split(feat_pattern, 1)[0].strip()  # Title up to "feat."
+                featured_artists = " ".join(parts[1:]).split(feat_pattern, 1)[-1].strip()  # Everything after "feat."
+                break
+        
+        metadata = {
+            "track_number": "00",
+            "artist": artist,
+            "title": title,
+            "featured_artists": featured_artists,
+            "extension": filename.split('.')[-1]  # Get the file extension
+        }
         
         return metadata
 
@@ -111,21 +100,19 @@ def write_metadata(file_path, metadata):
         tqdm.write(f"⚠ Error writing metadata to {os.path.basename(file_path)}: {e}")
 
 def process_files_in_directory(directory):
-    """ Processes all audio files in a directory and updates their metadata. """
+    """ Processes all audio files in a directory and subdirectories, updating their metadata. """
     supported_extensions = (".mp3", ".flac", ".wav")
-    files = [f for f in os.listdir(directory) if f.lower().endswith(supported_extensions)]
-
-    if not files:
-        print("No supported music files found.")
-        return
-
-    for file in tqdm(files, desc="Processing Music Files", unit="file"):
-        metadata = parse_filename(file)
-        if metadata:
-            file_path = os.path.join(directory, file)
-            write_metadata(file_path, metadata)
-        else:
-            tqdm.write(f"⚠ Skipping {file} (Invalid format)")
+    
+    # Recursively walk through all directories and files
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.lower().endswith(supported_extensions):
+                file_path = os.path.join(root, file)
+                metadata = parse_filename(file)
+                if metadata:
+                    write_metadata(file_path, metadata)
+                else:
+                    tqdm.write(f"⚠ Skipping {file} (Invalid format)")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract metadata from filenames and embed it into music files.")
