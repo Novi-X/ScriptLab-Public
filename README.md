@@ -5,29 +5,46 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 
 ## 📂 Project Structure
 ```
-📂 ScriptLab-main/
+📂 ScriptLab/
 ├── 📂 Filesystem_Tools/
 │   ├── 📂 Directory-Structure/
-│   │   ├── 📄 README.md
+│   │   ├── 📂 pseudocode/
+│   │   │   ├── 📄 T1_HighLevel_PC.md 
+│   │   │   └── 📄 T2_Structured_PC.md 
+│   │   ├── 📄 README.md 
 │   │   └── 📄 dir-structure.py
 │   ├── 📂 Metadata-Tools/
 │   │   ├── 📂 Icon-Changer/
-│   │   │   ├── 📄 README.md
-│   │   │   ├── 📄 icon-changer.py
+│   │   │   ├── 📂 pseudocode/
+│   │   │   │   ├── 📄 T1_HighLevel_PC.md 
+│   │   │   │   └── 📄 T2_Structured_PC.md 
+│   │   │   ├── 📄 README.md 
+│   │   │   └── 📄 icon-changer.py 
 │   │   ├── 📂 Meta-Write/
-│   │   │   ├── 📄 README.md
-│   │   │   ├── 📄 meta-write.py
+│   │   │   ├── 📂 pseudocode/
+│   │   │   │   ├── 📄 T1_HighLevel_PC.md 
+│   │   │   │   └── 📄 T2_Structured_PC.md 
+│   │   │   ├── 📄 README.md 
+│   │   │   └── 📄 meta-write.py 
+│   │   └── 📄 README.md 
 │   ├── 📂 Renamers/
 │   │   ├── 📂 checksum-file-renamer/
-│   │   │   ├── 📄 README.md
-│   │   │   └── 📄 checksum-rename.py
+│   │   │   ├── 📂 pseudocode/
+│   │   │   │   ├── 📄 T1_HighLevel_PC.md 
+│   │   │   │   └── 📄 T2_Structured_PC.md 
+│   │   │   ├── 📄 README.md 
+│   │   │   └── 📄 checksum-rename.py 
 │   │   └── 📂 music-renamer/
-│   │       ├── 📄 README.md
+│   │       ├── 📂 pseudocode/
+│   │       │   ├── 📄 T1_HighLevel_PC.md 
+│   │       │   └── 📄 T2_Structured_PC.md 
+│   │       ├── 📄 README.md 
 │   │       └── 📄 music-renamer.py
-│   └── 📄 README.md
-├── 📄 LICENSE
-├── 📄 README.md
+│   └── 📄 README.md 
+├── 📄 LICENSE 
+├── 📄 README.md 
 └── 📄 requirements.txt
+
 ```
 
 ## 🔹 Included Scripts
