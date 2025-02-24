@@ -46,7 +46,9 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   │   ├── 📂 pseudocode/
 │   │   │   ├── 📄 T1_HighLevel_PC.md
 │   │   │   └── 📄 T2_Structured_PC.md
+│   │   ├── 📄 channels.txt
 │   │   ├── 📄 README.md
+│   │   ├── 📄 todo.txt
 │   │   └── 📄 ytfetch.py
 │   └── 📄 README.md
 ├── 📄 LICENSE 
