@@ -41,6 +41,16 @@ ScriptLab is a collection of automation scripts designed to streamline workflows
 │   │       ├── 📄 README.md 
 │   │       └── 📄 music-renamer.py
 │   └── 📄 README.md 
+├── 📂 MediaDownload_Tools/
+│   ├── 📂 yt-dlp-automation/
+│   │   ├── 📂 pseudocode/
+│   │   │   ├── 📄 T1_HighLevel_PC.md
+│   │   │   └── 📄 T2_Structured_PC.md
+│   │   ├── 📄 channels.txt
+│   │   ├── 📄 README.md
+│   │   ├── 📄 todo.txt
+│   │   └── 📄 ytfetch.py
+│   └── 📄 README.md
 ├── 📄 LICENSE 
 ├── 📄 README.md 
 └── 📄 requirements.txt
@@ -103,6 +113,14 @@ python music-renamer.py /path/to/music --copy
 ```bash
 python meta-write.py /path/to/music
 ```
+
+### **6️⃣ ytfetch - YouTube Auto Downloader**
+📌 **Automates YouTube video downloads, ensuring only new content is fetched.**
+- Fetches new videos without redownloading old ones.
+- Uses a text-based configuration file (`channels.txt`) for batch processing.
+- Saves videos in user-specified folders based on creator names.
+- Tracks downloaded content using `downloaded_videos.txt`.
+- Supports scheduled execution via cron jobs or Task Scheduler.
 
 ## 🛠 Installation
 To install dependencies, run:

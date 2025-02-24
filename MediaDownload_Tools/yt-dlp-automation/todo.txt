@@ -1,0 +1,1 @@
+Impliment automatic syncing to eliminate the need for setting up Chron tasks or windows automated tasks
