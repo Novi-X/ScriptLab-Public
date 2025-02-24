@@ -1,7 +1,7 @@
 # General Utilities
 tqdm==4.66.2            # Progress bars for terminal output
 requests==2.31.0        # HTTP requests (used for Telegram updates)
-yt-dlp			        # Used for downloading YouTube videos and other media sources
+yt-dlp==2025.02.19      # Used for downloading YouTube videos and other media sources
 
 # File Metadata Handling
 mutagen==1.46.0         # Music metadata extraction & writing (MP3, FLAC, WAV)
