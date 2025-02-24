@@ -18,7 +18,7 @@ The **Directory Structure Generator** is a Python script that recursively scans 
 To use this script, **clone the repository** and install the required dependencies:
 
 ```bash
-git clone https://github.com/yung-megafone/ScriptLab.git
+git clone https://github.com/Novi-X/ScriptLab.git
 cd ScriptLab/filesystem_tools
 pip install -r requirements.txt  # Install dependencies
 ```
