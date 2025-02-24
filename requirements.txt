@@ -1,1 +1,20 @@
-mutagen
+# General Utilities
+tqdm==4.66.2            # Progress bars for terminal output
+requests==2.31.0        # HTTP requests (used for Telegram updates)
+yt-dlp			        # Used for downloading YouTube videos and other media sources
+
+# File Metadata Handling
+mutagen==1.46.0         # Music metadata extraction & writing (MP3, FLAC, WAV)
+
+# Argument Parsing (Built-in, but noted for reference)
+# argparse   # Used for CLI argument handling
+
+# Standard Python Libraries (Do not need installation)
+# os         # File and directory operations
+# sys        # System interactions
+# time       # Timing functions
+# datetime   # Timestamping for logs and reports
+# shutil     # File operations (copying, moving, deleting)
+# re         # Regular expressions for parsing filenames
+# hashlib    # SHAKE-128 checksum generation
+# concurrent.futures  # Multithreading for efficiency
